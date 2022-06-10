@@ -8,8 +8,11 @@ import {
 	Roboto_500Medium
 } from '@expo-google-fonts/roboto';
 
+import theme from './src/styles/theme';
+
 import { Routes } from './src/routes';
 import { View } from 'react-native';
+import { ThemeProvider } from 'styled-components';
 
 export default function App() {
 	useEffect(() => {
@@ -43,9 +46,11 @@ export default function App() {
 	}
 
 	return (
-		<View onLayout={onLayoutRootView}>
-			<Routes/>
-		</View>
+		<ThemeProvider theme={theme}>
+			<View onLayout={onLayoutRootView} style={{ flex: 1 }}>
+				<Routes/>
+			</View>
+		</ThemeProvider>
 	);
 }
 
