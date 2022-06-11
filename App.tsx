@@ -53,6 +53,7 @@ export default function App() {
 	return (
 		// Componente pai de todo projeto
 		<ThemeProvider theme={theme}>
+			<StatusBar translucent style='dark' />
 			<View onLayout={onLayoutRootView} style={{ flex: 1 }}>
 				<Routes/>
 			</View>
