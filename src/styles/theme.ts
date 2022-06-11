@@ -1,3 +1,4 @@
+// Cores utilizadas no app
 export default {
     colors: {
         white: '#DDE3F0',

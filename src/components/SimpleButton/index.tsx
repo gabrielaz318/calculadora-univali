@@ -14,7 +14,10 @@ interface ISimpleButton {
 }
 
 export function SimpleButton({ value, color, action }: ISimpleButton) {
+    // Função quando o botão é pressionado
     function handlePressButton() {
+        // Identificao os tipos de botão para saber se é 
+        // necessário passar alguma info. para função
         switch (value) {
             case '=':
                 action()
@@ -28,7 +31,9 @@ export function SimpleButton({ value, color, action }: ISimpleButton) {
     }
 
     return (
+        // Botão
         <Container onPress={handlePressButton} color={color} activeOpacity={.7}>
+            {/* Valor do botão */}
             {value == '$ERASE$' ? <Entypo name="erase" size={RFValue(28)} color="black" /> : <Text>{value}</Text>}
             
         </Container>

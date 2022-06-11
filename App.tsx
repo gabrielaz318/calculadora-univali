@@ -15,7 +15,9 @@ import { View } from 'react-native';
 import { ThemeProvider } from 'styled-components';
 
 export default function App() {
+	// Função executado em toda abertura do App
 	useEffect(() => {
+		// Função que verifica atualização via OTA
 		async function updateApp() {
 			const { isAvailable } = await Updates.checkForUpdateAsync()
 			if (isAvailable) {
@@ -23,18 +25,21 @@ export default function App() {
 				await Updates.reloadAsync()
 			}
 		}
+		// Função que impede a splash de sumir
 		async function prepare() {
 			await SplashScreen.preventAutoHideAsync();
 		}
-		// updateApp();
+		updateApp();
 		prepare();
 	}, [])
 
+	// Função que carrega as fontes
 	const [fontsLoaded] = useFonts({
 		Roboto_400Regular,
 		Roboto_500Medium
 	});
 
+	// função que verifica se as fontes já carregara para poder remover a splash
 	const onLayoutRootView = useCallback(async () => {
 		if (fontsLoaded) {
 		  await SplashScreen.hideAsync();
@@ -46,6 +51,7 @@ export default function App() {
 	}
 
 	return (
+		// Componente pai de todo projeto
 		<ThemeProvider theme={theme}>
 			<View onLayout={onLayoutRootView} style={{ flex: 1 }}>
 				<Routes/>
